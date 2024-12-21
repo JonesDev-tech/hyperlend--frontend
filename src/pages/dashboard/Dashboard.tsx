@@ -9,24 +9,38 @@ import ReactGA from 'react-ga4';
 
 import Modal from '../../components/common/Modal';
 import CardItem from '../../components/common/CardItem';
-import InfoItem from '../../components/common/InfoItem';
-import SectionTitle from '../../components/common/SectionTitle';
+// import InfoItem from '../../components/common/InfoItem';
+// import SectionTitle from '../../components/common/SectionTitle';
 
 import Navbar from '../../layouts/Navbar';
-import Factor from '../../components/dashboard/Factor';
-import MyChart from '../../components/dashboard/Chart';
-import PositionBar from '../../components/dashboard/PositionBar';
-
+// import Factor from '../../components/dashboard/Factor';
+// import MyChart from '../../components/dashboard/Chart';
+// import PositionBar from '../../components/dashboard/PositionBar';
+import TotalEarned from '../../components/common/TotalEarned';
 import { formatNumber } from '../../utils/functions';
 import { ModalType } from '../../utils/types';
 
-import { getUserPoints } from '../../utils/user/points';
+// import { getUserPoints } from '../../utils/user/points';
 import { contracts, abis, networkChainId } from '../../utils/config';
 import { useUserPositionsData } from '../../utils/user/core/positions';
-import { useUserWalletValueUsd } from '../../utils/user/wallet';
-import { useUserPortfolioHistory } from '../../utils/user/history';
+// import { useUserWalletValueUsd } from '../../utils/user/wallet';
+// import { useUserPortfolioHistory } from '../../utils/user/history';
 import { useNavigate } from 'react-router-dom';
 import { useConfirm } from '../../provider/ConfirmProvider';
+import pointItem from "../../assets/icons/pointItem.svg";
+import eye from "../../assets/icons/eye.svg";
+import alignCenterItem from "../../assets/icons/align_center.svg";
+// import vectorImg from "../../assets/icons/vector.svg";
+import semiCircle from "../../assets/icons/semiCircle.svg";
+import dailyEarningItem from "../../assets/icons/dailyEarningItem.svg";
+import arrowUp from "../../assets/icons/arrowUp.svg";
+import arrowDown from "../../assets/icons/arrowDown.svg";
+import maskGroup from "../../assets/icons/maskGroup.svg";
+import angle from "../../assets/icons/angle.svg";
+import coinGroup from "../../assets/icons/coinGroup.svg";
+import bitcoinGroup from "../../assets/icons/bitcoinGroup.svg";
+import stHype from "../../assets/icons/stHype.svg";
+import ethereum from "../../assets/icons/ethereum.svg";
 import { motion } from 'framer-motion';
 
 function Dashboard() {
@@ -60,20 +74,20 @@ function Dashboard() {
   const {
     supplied,
     borrowed,
-    totalBalanceUsd,
-    totalSupplyUsd,
-    totalBorrowUsd,
-    totalBorrowLimit,
-    totalBalanceChange,
-    totalBalanceChangePercentage,
-    netApy,
-    healthFactor,
+    // totalBalanceUsd,
+    // totalSupplyUsd,
+    // totalBorrowUsd,
+    // totalBorrowLimit,
+    // totalBalanceChange,
+    // totalBalanceChangePercentage,
+    // netApy,
+    // healthFactor,
   } = useUserPositionsData(isConnected, address);
 
-  const { totalPoints, pointsIncrease, pointsPercentIncrease } =
-    getUserPoints();
-  const { walletBalanceValue } = useUserWalletValueUsd();
-  const { historicalNetWorth } = useUserPortfolioHistory(address, isConnected);
+  // const { totalPoints, pointsIncrease, pointsPercentIncrease } =
+  //   getUserPoints();
+  // const { walletBalanceValue } = useUserWalletValueUsd();
+  // const { historicalNetWorth } = useUserPortfolioHistory(address, isConnected);
 
   const sendToggleCollateralTx = (asset: string, isEnabled: boolean) => {
     writeContractAsync({
@@ -131,11 +145,6 @@ function Dashboard() {
         className='flex flex-col'
       >
         <Navbar pageTitle='Dashboard' />
-        <div className='text-white'>
-          ⚠️ Hyperliquid EVM Testnet oracle isn't working currently, so
-          borrowing/repaying/withdrawing will fail and price data isn't
-          available.
-        </div>
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -146,147 +155,113 @@ function Dashboard() {
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className='flex flex-col md:flex-row gap-4 justify-between'
+            className='flex-col md:flex-row grid grid-cols-3 gap-4 justify-between font-lufga font-normal'
           >
             <CardItem
               ref={divRefs[0]}
-              className={`px-4 lg:px-8 py-4 h-60 md:h-72 max-w-[480px] w-full overflow-hidden md:mb-0 mx-auto ${guided > 0 && guided !== 1 ? 'lg:blur-[8px]' : ''}`}
+              className={`px-4 lg:px-8 py-8 col-span-3 lg:col-span-2 lg:h-80 bg-card-bg bg-top-right-4 overflow-hidden md:mb-0 ${guided > 0 && guided !== 1 ? 'lg:blur-[8px]' : ''}`}
             >
-              <div className=''>
-                <div className='flex gap-2 items-center'>
-                  <SectionTitle title='Health Factor' />
-                  <InfoItem
-                    title={
-                      <span>
-                        Health factor is a numerical value that represents the
-                        ratio of the value of a user's collateral to the value
-                        of their borrowed assets. <br />
-                        It is designed to give borrowers a clear understanding
-                        of the risk associated with their current positions.
-                        <br /> HF under 1.2 is generally considered low.
-                      </span>
-                    }
-                    className='w-[340px]'
-                  />
+              <div className='flex ml-1.5'>
+                <img src={pointItem} />
+                <p className='text-lg text-[#AEEAB9] ml-1 mt-1'>Master Guardian</p>
+              </div>
+              <div className='text-[#CAEAE5] py-2 ml-1.5'>
+                <p className='text-[22px]'>Welcome to HyperLend!</p>
+                <p className='text-5xl'>Hello hyperlend.hl</p> 
+              </div>
+              <div className='grid grid-cols-5 gap-4 py-2'>
+                <div className='bg-[#071311] h-28 col-span-5 border rounded-2xl border-[#caeae519] py-4 px-8 lg:col-span-2'>
+                  <div className='flex'>
+                    <p className='text-[#E1E1E1] text-xs'>Current balance</p>
+                    <img src={eye} className='w-3 h-2.5 ml-2' />
+                  </div>
+                  <p className='items-center text-[28px] text-white mt-1 tracking-[0.015em]'>$1,753,050</p>
+                  <p className='items-center text-sm text-[#2DC24E]'>+$22,568(+1.28%)</p>
+                </div>  
+                <div className='hidden bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-6 lg:block'>
+                  <div className='flex'>
+                    <p className='text-[#E1E1E1] text-xs'>Total APY</p>
+                    <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1' />
+                  </div>
+                  <p className='items-center text-[28px] text-white mt-2'>18,7%</p>
+                  <p className='items-center text-sm text-[#2DC24E]'>+1.3%</p>
                 </div>
-                <div className='flex mt-0 md:mt-12 text-center justify-center items-end'>
-                  <Factor healthFactor={healthFactor} />
+                <div className='hidden bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-6 lg:block'>
+                  <div className='flex'>
+                    <p className='text-[#E1E1E1] text-xs'>Total Points</p>
+                    <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
+                  </div>
+                  <p className='items-center text-[28px] text-white mt-2'>421</p>
+                  <p className='items-center text-sm text-[#2DC24E]'>+12(3.89%)</p>
+                </div>
+                <div className='hidden bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-3.5 lg:block'>
+                  <div className='flex mb-2'>
+                    <p className='text-[#E1E1E1] text-xs'>Headth Factor</p>
+                    <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
+                  </div>
+                  <div className='flex items-center justify-center'><img src={semiCircle} /></div>
+                  <p className='justify-center flex text-[28px] text-white -mt-5'>9,8</p>
+                </div>
+              </div>
+              <div className='grid grid-cols-3 gap-4 lg:hidden'>
+                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-6'>
+                  <div className='flex'>
+                    <p className='text-[#E1E1E1] text-xs'>Total APY</p>
+                    <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1' />
+                  </div>
+                  <p className='items-center text-[28px] text-white mt-2'>18,7%</p>
+                  <p className='items-center text-sm text-[#2DC24E]'>+1.3%</p>
+                </div>
+                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-6'>
+                  <div className='flex'>
+                    <p className='text-[#E1E1E1] text-xs'>Total Points</p>
+                    <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
+                  </div>
+                  <p className='items-center text-[28px] text-white mt-2'>421</p>
+                  <p className='items-center text-sm text-[#2DC24E]'>+12(3.89%)</p>
+                </div>
+                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-3.5'>
+                  <div className='flex mb-2'>
+                    <p className='text-[#E1E1E1] text-xs'>Headth Factor</p>
+                    <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
+                  </div>
+                  <div className='flex items-center justify-center'><img src={semiCircle} /></div>
+                  <p className='justify-center flex text-[28px] text-white -mt-5'>9,8</p>
                 </div>
               </div>
             </CardItem>
 
             <CardItem
               ref={divRefs[1]}
-              className={`py-4 lg:py-6 px-4 lg:px-7 md:w-full ${guided > 0 && guided !== 2 ? 'lg:blur-[8px]' : ''}`}
+              className={`py-4 col-span-3 lg:h-80 lg:col-span-1 px-6 pt-[22px]: ${guided > 0 && guided !== 2 ? 'lg:blur-[8px]' : ''}`}
             >
-              <SectionTitle
-                title='Your Positions'
-                className='mb-8 font-lufga'
-              />
-              <div className='flex flex-col justify-between gap-5 w-full'>
-                <div className='h-20 font-lufga'>
-                  <div className='flex gap-2 items-center mb-2'>
-                    <span className='text-white'>Collateral deposited</span>
-                    <InfoItem
-                      title={
-                        <span>
-                          Displays ratio of assets deposited to HyperLend
-                          relative to total assets in your wallet
-                        </span>
-                      }
-                      className='w-[200px]'
-                    />
-                  </div>
-                  <PositionBar
-                    available={totalSupplyUsd}
-                    total={totalSupplyUsd + walletBalanceValue}
-                  />
+              <div className='flex justify-between'>
+                <p className='text-[#E1E1E1] text-xs'>Your Position</p>
+                <div className='flex'>
+                  <p className='text-[#CAEAE5] text-base mr-2 border-b'>Daily Earnings</p>
+                  <img src={dailyEarningItem} />
                 </div>
-                <div className='h-20 font-lufga'>
-                  <div className='flex gap-2 items-center mb-2'>
-                    <span className='text-white'>Borrow</span>
-                    <InfoItem
-                      title={
-                        <span>
-                          Displays ratio of assets deposited to HyperLend
-                          relative to total assets in your wallet
-                        </span>
-                      }
-                      className='w-[200px]'
-                    />
-                  </div>
-                  <PositionBar
-                    available={totalBorrowUsd}
-                    total={totalBorrowLimit}
-                  />
-                </div>
+              </div>
+              <div className='grid grid-flow-col gap-4 grid-cols-2 lg:block'>
+                <TotalEarned title={"Total Deposited"} amount={"$1,753,050"} earnedAmount={"+$33,132(+1.89%)"} className='' />
+                <TotalEarned title={"Total Borrowed"} amount={"$153,370"} earnedAmount={"+$1,855(+1.21%)"} className='bg-[#ff00040c]' />
               </div>
             </CardItem>
           </motion.div>
-
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            <CardItem
-              ref={divRefs[2]}
-              className={`py-4 lg:py-6 px-4 lg:px-7 order-first lg:order-none ${guided > 0 && guided !== 3 ? 'lg:blur-[8px]' : ''}`}
-            >
-              <div className='flex flex-col lg:flex-row gap-4 xl:gap-12 2xl:gap-24 justify-between items-center'>
-                <div className='flex gap-4 justify-between items-center w-full lg:flex-1'>
-                  <div className='flex flex-col gap-4'>
-                    <SectionTitle title='Current Net Worth' />
-                    <p className='text-white text-[28px] font-medium font-lufga'>
-                      ${formatNumber(totalBalanceUsd, 2)}
-                    </p>
-                    <p
-                      className={
-                        totalBalanceChange >= 0
-                          ? 'text-success text-sm font-lufga'
-                          : 'text-red-500 text-sm font-lufga'
-                      }
-                    >
-                      {`${totalBalanceChange >= 0 ? '+' : '-'}`}$
-                      {formatNumber(Math.abs(totalBalanceChange), 2)} (
-                      {`${totalBalanceChangePercentage >= 0 ? '+' : '-'}`}
-                      {formatNumber(Math.abs(totalBalanceChangePercentage), 2)}
-                      %)
-                    </p>
-                  </div>
-                  <div className='flex flex-col gap-4'>
-                    <SectionTitle title='Total APY' />
-                    <p className='text-white text-[28px] font-medium font-lufga'>
-                      {formatNumber(netApy, 1)}%
-                    </p>
-                    <p className='text-success text-sm font-lufga'>&nbsp;</p>
-                  </div>
-                  <div className='flex flex-col gap-4 blur-xs'>
-                    <SectionTitle title='Total Points' />
-                    <p className='text-white text-[28px] font-medium font-lufga'>
-                      {formatNumber(totalPoints, 2)}
-                    </p>
-                    <p
-                      className={
-                        pointsIncrease >= 0
-                          ? 'text-success text-sm font-lufga'
-                          : 'text-red-500 text-sm font-lufga'
-                      }
-                    >
-                      {`${pointsIncrease >= 0 ? '+' : '-'}`}
-                      {formatNumber(Math.abs(pointsIncrease), 2)} (
-                      {`${pointsPercentIncrease >= 0 ? '+' : '-'}`}
-                      {formatNumber(Math.abs(pointsPercentIncrease), 2)}
-                      %)
-                    </p>
-                  </div>
-                </div>
-                <div className='w-full lg:w-[400px] xl:w-[500px] 2xl:w-1/2 h-[150px]'>
-                  <MyChart data={historicalNetWorth} />
-                </div>
-              </div>
-            </CardItem>
-          </motion.div>
+          <div className='hidden justify-between font-lufga font-normal mt-6 lg:flex'>
+            <div className='text-lg flex'>
+              <div className='text-center border-b-2 text-[#CAEAE5] w-40'>Core</div>
+              <div className='text-center border-b-2  text-[#caeae566] w-40'>Isolated</div>
+            </div>
+            <div className='flex'>
+              <p className='text-[#caeae566] text-base mr-2 border-b-2'>Your Transactions</p>
+              <img src={dailyEarningItem} className='w-4 h-4' />
+            </div>
+          </div>
+          <div className='text-lg flex mt-6 lg:hidden'>
+            <div className='text-center border-b-2 text-[#CAEAE5] w-1/2'>Core</div>
+            <div className='text-center border-b-2  text-[#caeae566] w-1/2'>Isolated</div>
+          </div>
 
           <motion.div
             ref={divRefs[3]}
@@ -295,23 +270,35 @@ function Dashboard() {
             transition={{ delay: 0.6 }}
             className={`lg:flex gap-5 justify-between ${guided > 0 && guided !== 4 ? 'lg:blur-[8px]' : ''}`}
           >
-            <CardItem className='py-4 lg:py-6 px-4 md:px-4 xl:px-7 flex-1 mb-4 lg:mb-0'>
-              <div className='max-h-[250px]'>
-                <p className='text-white font-lufga text-2xl pb-4'>Supplied</p>
-                <div className='text-center'>
-                  <div className='py-3 px-2 grid grid-cols-6 border-y-[1px] bg-grey border-[#212325]'>
-                    <div className='text-white font-lufga text-[11px]'>
+            <CardItem className='py-4 lg:py-6 flex-1 mb-4 lg:mb-0'>
+              <div className='h-80'>
+                <div className='flex ml-6'>
+                  <div className="border mr-3 rounded-full border-dashed w-7 h-7 border-[#caeae50c] items-center justify-center flex">
+                    <img src={arrowUp} />
+                  </div>
+                  <p className='text-white font-lufga text-2xl pb-4'>You Supplied</p>
+                </div>
+                <div className='text-center bg-[#071311]'>
+                  <div className='py-3 px-6 grid grid-cols-6 border-y-[1px] border-[#050F0D] bg-[#212325]'>
+                    <div className='text-white font-lufga text-[11px] flex'>
                       Assets
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px]'>
+                    <div className='text-white font-lufga text-[11px] flex'>
                       Balance
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px]'>
+                    <div className='text-white font-lufga text-[11px] flex ml-4'>
                       Value
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px]'>APR</div>
-                    <div className='text-white font-lufga text-[11px]'>
+                    <div className='text-white font-lufga text-[11px] flex ml-8'>
+                      APR
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
+                    </div>
+                    <div className='text-white font-lufga text-[11px] flex ml-4'>
                       Collateral
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
                     <div className='text-white font-lufga text-[11px]'></div>
                   </div>
@@ -373,25 +360,93 @@ function Dashboard() {
                     ))}
                   </div>
                 </div>
+                <div className='text-center bg-[#111E1C]'>
+                  <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                    <div className='text-white font-lufga text-[15px] flex justify-center items-center'>
+                      <img src={maskGroup} className='w-3 h-3 mr-1' />
+                      PURR
+                    </div>
+                    <p>138.93K</p>
+                    <p>$22.21K</p>
+                    <p className='text-[#2DC24E]'>14.56%</p>
+                    <div>
+                      <img src={angle} />
+                    </div>
+                    <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Supply</div>
+                  </div>
+                  <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                    <div className='text-white font-lufga text-[15px] flex items-center justify-center'>
+                      <img src={coinGroup} className='w-3 h-3 mr-1' />
+                      USDC
+                    </div>
+                    <p>$783.12K</p>
+                    <p>$783.12K</p>
+                    <p className='text-[#2DC24E]'>3.77%</p>
+                    <div className='items-center flex justify-center'>
+                      <img src={angle} />
+                    </div>
+                    <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Supply</div>
+                  </div>
+                  <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                    <div className='text-white font-lufga text-[15px] items-center justify-center flex'>
+                      <img src={bitcoinGroup} className='w-3 h-3 mr-1' />
+                      MBTC
+                    </div>
+                    <p>12.88</p>
+                    <p>$772.82K</p>
+                    <p className='text-[#2DC24E]'>4.11%</p>
+                    <div>
+                      <img src={angle} />
+                    </div>
+                    <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Supply</div>
+                  </div>
+                  <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                    <div className='text-white font-lufga text-[15px] items-center justify-center flex'>
+                      <img src={stHype} className='w-3 h-3 mr-1' />
+                      stHYPE
+                    </div>
+                    <p>12.41K</p>
+                    <p>$17.92K</p>
+                    <p className='text-[#2DC24E]'>4.11%</p>
+                    <div>
+                      <img src={angle} />
+                    </div>
+                    <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Supply</div>
+                  </div>
+                  
+                  
+                </div>
               </div>
             </CardItem>
-            <CardItem className='py-4 lg:py-6 px-4 md:px-4 xl:px-7 flex-1'>
+            <CardItem className='py-4 lg:py-6 flex-1'>
               <div className='max-h-[250px]'>
-                <p className='text-white font-lufga text-2xl pb-4'>Borrowed</p>
+                <div className='flex ml-6'>
+                  <div className="border mr-3 rounded-full border-dashed w-7 h-7 bg-[#ff00040c] border-[#caeae50c] items-center justify-center flex">
+                    <img src={arrowDown} />
+                  </div>
+                  <p className='text-white font-lufga text-2xl pb-4'>You Borrowed</p>
+                </div>
                 <div className='text-center'>
-                  <div className='py-3 px-2 grid grid-cols-6 border-y-[1px] bg-grey border-[#212325] items-center'>
-                    <div className='text-white font-lufga text-[11px]'>
+                <div className='py-3 px-6 grid grid-cols-6 border-y-[1px] border-[#050F0D] bg-[#212325]'>
+                    <div className='text-white font-lufga text-[11px] flex'>
                       Assets
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px]'>
+                    <div className='text-white font-lufga text-[11px] flex'>
                       Balance
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px]'>
+                    <div className='text-white font-lufga text-[11px] flex ml-4'>
                       Value
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px]'>APR</div>
-                    <div className='text-white font-lufga text-[11px]'>
+                    <div className='text-white font-lufga text-[11px] flex ml-8'>
+                      APR
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
+                    </div>
+                    <div className='text-white font-lufga text-[11px] flex ml-4'>
                       Pool
+                      <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
                     <div className='text-white font-lufga text-[11px]'></div>
                   </div>
@@ -441,6 +496,52 @@ function Dashboard() {
                         </div>
                       </button>
                     ))}
+                  </div>
+                  <div className='text-center bg-[#111E1C]'>
+                    <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                      <div className='text-white font-lufga text-[15px] flex items-center justify-center'>
+                        <img src={coinGroup} className='w-3 h-3 mr-1' />
+                        USDC
+                      </div>
+                      <p>50.5K</p>
+                      <p>$50.5K</p>
+                      <p className='text-[#2DC24E]'>6.12%</p>
+                      <p className='text-[#2DC24E]'>Core</p>
+                      <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Reply</div>
+                    </div>
+                    <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                      <div className='text-white font-lufga text-[15px] flex justify-center items-center'>
+                        <img src={maskGroup} className='w-3 h-3 mr-1' />
+                        PURR
+                      </div>
+                      <p>36.1K</p>
+                      <p>$5.77K</p>
+                      <p className='text-[#2DC24E]'>17.74%</p>
+                      <p className='text-[#2DC24E]'>Core</p>
+                      <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Reply</div>
+                    </div>
+                    <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                      <div className='text-white font-lufga text-[15px] items-center justify-center flex'>
+                        <img src={ethereum} className='w-3 h-3 mr-1' />
+                        ETH
+                      </div>
+                      <p>18.8</p>
+                      <p>$47.3K</p>
+                      <p className='text-[#2DC24E]'>11.59%</p>
+                      <p className='text-[#2DC24E]'>Core</p>
+                      <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Reply</div>
+                    </div>
+                    <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                      <div className='text-white font-lufga text-[15px] items-center justify-center flex'>
+                        <img src={bitcoinGroup} className='w-3 h-3 mr-1' />
+                        MBTC
+                      </div>
+                      <p>0.73</p>
+                      <p>$44.8K</p>
+                      <p className='text-[#2DC24E]'>6.38%</p>
+                      <p className='text-[#2DC24E]'>Core</p>
+                      <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Reply</div>
+                    </div>
                   </div>
                 </div>
               </div>

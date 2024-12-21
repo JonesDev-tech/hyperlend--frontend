@@ -9,6 +9,7 @@ import Status from '../components/header/Status';
 import logoutIcon from '../assets/icons/logout-icon.svg';
 import xmarkIcon from '../assets/icons/xmark-icon.svg';
 import referralsIcon from '../assets/icons/referralsIcon.svg';
+import pointsItem from '../assets/icons/pointItem.svg';
 import { toggleModalOpen, toggleSidebar } from '../store/sidebarSlice';
 import { useEffect, useRef, useState } from 'react';
 
@@ -126,6 +127,22 @@ function Sidebar() {
               </p>
             </button>
 
+            <button
+              className={`flex items-center gap-2 transition-all duration-300 ease-in-out transform`}
+              type='button'
+            >
+              <div
+                className={`transition-all duration-300 ease-in-out transform px-3`}
+              >
+                <img src={pointsItem} className='w-5' alt={'points'} />
+              </div>
+              <p
+                className={`font-lufga font-medium transition-colors duration-300 ease-in-out text-secondary`}
+              >
+                Points
+              </p>
+            </button>
+
             {networkChainId == 998 && isConnected ? (
               isCapcthaRequested ? (
                 <Turnstile
@@ -185,7 +202,7 @@ function Sidebar() {
             target='_blank'
           >
             <img className='' src={logoutIcon} alt='' />
-            <p className='font-lufga text-grey-light'>Docs</p>
+            <p className='font-lufga text-grey-light'>logout</p>
           </a>
           <button
             className='lg:hidden'

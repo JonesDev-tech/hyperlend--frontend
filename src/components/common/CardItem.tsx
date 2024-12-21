@@ -10,7 +10,7 @@ type CardItemProps = {
 const CardItem = forwardRef<HTMLDivElement, CardItemProps>(
   ({ className, children }, ref) => {
     return (
-      <div ref={ref} className={`rounded-2xl bg-primary ${className}`}>
+      <div ref={ref} className={`rounded-2xl border bg-[#071311] border-[#caeae519] ${className}`}>
         {children}
       </div>
     );

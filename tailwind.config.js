@@ -9,6 +9,13 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'card-bg': "url('/src/assets/icons/background.svg')"
+      },
+      backgroundPosition: {
+        
+        'top-right-4' : 'top right -11rem'
+      },
       spacing: {
         2.5: '0.7rem', // 10px
       },

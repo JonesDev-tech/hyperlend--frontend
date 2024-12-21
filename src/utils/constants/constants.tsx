@@ -80,12 +80,12 @@ const navLinksTop: NavLinkProps[] = [
 ];
 
 const navLinksDown: NavLinkProps[] = [
-  {
-    id: 'points',
-    title: 'Points',
-    url: '/points',
-    disabled: true,
-  },
+  // {
+  //   id: 'points',
+  //   title: 'Points',
+  //   url: '/points',
+  //   disabled: true,
+  // },
   {
     id: 'staking',
     title: 'Staking',
