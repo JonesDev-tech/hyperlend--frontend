@@ -42,7 +42,7 @@ function MainContent() {
       <main
         className={`bg-primary-light w-full relative lg:h-screen inset-0 z-0 ${!is404 ? 'lg:w-[calc(100vw-256px)]' : ''}`}
       >
-        <div className='inset-0 px-4 py-8 md:px-6 xl:p-14 z-20 lg:max-h-screen h-full overflow-auto '>
+        <div className='inset-0 px-4 py-8 md:px-6 xl:p-14 z-20 lg:max-h-100dvh h-full overflow-auto '>
           <Routes>
             <Route path='/' element={<Navigate to='/dashboard' />} />
             <Route path='dashboard' element={<Dashboard />} />

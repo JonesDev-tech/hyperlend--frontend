@@ -271,7 +271,7 @@ function Dashboard() {
             className={`lg:flex gap-5 justify-between ${guided > 0 && guided !== 4 ? 'lg:blur-[8px]' : ''}`}
           >
             <CardItem className='py-4 lg:py-6 flex-1 mb-4 lg:mb-0'>
-              <div className='h-80'>
+              <div className='h-auto'>
                 <div className='flex ml-6'>
                   <div className="border mr-3 rounded-full border-dashed w-7 h-7 border-[#caeae50c] items-center justify-center flex">
                     <img src={arrowUp} />
