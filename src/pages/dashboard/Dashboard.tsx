@@ -233,7 +233,7 @@ function Dashboard() {
 
             <CardItem
               ref={divRefs[1]}
-              className={`py-4 col-span-3 lg:h-80 lg:col-span-1 px-6 pt-[22px]: ${guided > 0 && guided !== 2 ? 'lg:blur-[8px]' : ''}`}
+              className={`px-2 py-4 col-span-3 lg:py-4 lg:px-6 lg:h-80 lg:col-span-1 pt-[22px]: ${guided > 0 && guided !== 2 ? 'lg:blur-[8px]' : ''}`}
             >
               <div className='flex justify-between'>
                 <p className='text-[#E1E1E1] text-xs'>Your Position</p>
@@ -246,7 +246,7 @@ function Dashboard() {
                 <TotalEarned title={"Total Deposited"} amount={"$1,753,050"} earnedAmount={"+$33,132(+1.89%)"} className='' />
                 <TotalEarned title={"Total Borrowed"} amount={"$153,370"} earnedAmount={"+$1,855(+1.21%)"} className='bg-[#ff00040c]' />
               </div>
-              <div className="rounded-2xl border bg-[#071311] h-28 border-[#caeae519] mt-3 flex justify-between py-4 px-6 lg:hidden">
+              <div className="rounded-2xl border bg-[#071311] h-28 border-[#caeae519] mt-5 flex justify-between py-4 px-4 lg:hidden">
                 <div className=''>
                     <div className='flex'>
                         <p className='text-[#E1E1E1] text-xs'>Total Deposited</p>
@@ -261,7 +261,7 @@ function Dashboard() {
                         <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
                     <p className='items-center text-[28px] text-white mt-2'>$153,370</p>
-                    <p className='items-center text-sm text-[#2DC24E]'>+$33,132(+1.89%)</p>
+                    <p className='items-center text-sm text-[#2DC24E]'>+$1,855(+1.21%)</p>
                 </div>
               </div>
             </CardItem>
@@ -291,7 +291,7 @@ function Dashboard() {
             className={`lg:flex gap-5 justify-between ${guided > 0 && guided !== 4 ? 'lg:blur-[8px]' : ''}`}
           >
             <CardItem className='py-4 overflow-x-auto lg:py-6 flex-1 mb-4 lg:mb-0'>
-              <div className='h-auto  min-w-[500px]'>
+              <div className='h-auto  min-w-[520px]'>
                 <div className='flex ml-6'>
                   <div className="border mr-3 rounded-full border-dashed w-7 h-7 border-[#caeae50c] items-center justify-center flex">
                     <img src={arrowUp} />
@@ -439,7 +439,7 @@ function Dashboard() {
             </CardItem>
             
             <CardItem className='py-4 lg:py-6 flex-1 overflow-x-auto'>
-              <div className='max-h-[250px] min-w-[500px]'>
+              <div className='max-h-[250px] min-w-[520px]'>
                 <div className='flex ml-6'>
                   <div className="border mr-3 rounded-full border-dashed w-7 h-7 bg-[#ff00040c] border-[#caeae50c] items-center justify-center flex">
                     <img src={arrowDown} />
