@@ -204,25 +204,25 @@ function Dashboard() {
                 </div>
               </div>
               <div className='grid grid-cols-3 gap-4 lg:hidden'>
-                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-6'>
+                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-2'>
                   <div className='flex'>
-                    <p className='text-[#E1E1E1] text-xs'>Total APY</p>
+                    <p className='text-[#E1E1E1] text-[10px]'>Total APY</p>
                     <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1' />
                   </div>
                   <p className='items-center text-[28px] text-white mt-2'>18,7%</p>
                   <p className='items-center text-sm text-[#2DC24E]'>+1.3%</p>
                 </div>
-                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-6'>
+                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-2'>
                   <div className='flex'>
-                    <p className='text-[#E1E1E1] text-xs'>Total Points</p>
+                    <p className='text-[#E1E1E1] text-[10px]'>Total Points</p>
                     <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                   </div>
                   <p className='items-center text-[28px] text-white mt-2'>421</p>
                   <p className='items-center text-sm text-[#2DC24E]'>+12(3.89%)</p>
                 </div>
-                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-3.5'>
+                <div className='bg-[#071311] h-28 border rounded-2xl border-[#caeae519] py-4 px-2'>
                   <div className='flex mb-2'>
-                    <p className='text-[#E1E1E1] text-xs'>Headth Factor</p>
+                    <p className='text-[#E1E1E1] text-[9px]'>Headth Factor</p>
                     <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                   </div>
                   <div className='flex items-center justify-center'><img src={semiCircle} /></div>
@@ -242,12 +242,31 @@ function Dashboard() {
                   <img src={dailyEarningItem} />
                 </div>
               </div>
-              <div className='grid grid-flow-col gap-4 grid-cols-2 lg:block'>
+              <div className='hidden lg:block'>
                 <TotalEarned title={"Total Deposited"} amount={"$1,753,050"} earnedAmount={"+$33,132(+1.89%)"} className='' />
                 <TotalEarned title={"Total Borrowed"} amount={"$153,370"} earnedAmount={"+$1,855(+1.21%)"} className='bg-[#ff00040c]' />
               </div>
+              <div className="rounded-2xl border bg-[#071311] h-28 border-[#caeae519] mt-3 flex justify-between py-4 px-6 lg:hidden">
+                <div className=''>
+                    <div className='flex'>
+                        <p className='text-[#E1E1E1] text-xs'>Total Deposited</p>
+                        <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
+                    </div>
+                    <p className='items-center text-[28px] text-white mt-2'>$1,753,050</p>
+                    <p className='items-center text-sm text-[#2DC24E]'>+$33,132(+1.89%)</p>
+                </div>
+                <div className=''>
+                    <div className='flex'>
+                        <p className='text-[#E1E1E1] text-xs'>Total Deposited</p>
+                        <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
+                    </div>
+                    <p className='items-center text-[28px] text-white mt-2'>$153,370</p>
+                    <p className='items-center text-sm text-[#2DC24E]'>+$33,132(+1.89%)</p>
+                </div>
+              </div>
             </CardItem>
           </motion.div>
+         
           <div className='hidden justify-between font-lufga font-normal mt-6 lg:flex'>
             <div className='text-lg flex'>
               <div className='text-center border-b-2 text-[#CAEAE5] w-40'>Core</div>
@@ -262,6 +281,7 @@ function Dashboard() {
             <div className='text-center border-b-2 text-[#CAEAE5] w-1/2'>Core</div>
             <div className='text-center border-b-2  text-[#caeae566] w-1/2'>Isolated</div>
           </div>
+          
 
           <motion.div
             ref={divRefs[3]}
@@ -270,8 +290,8 @@ function Dashboard() {
             transition={{ delay: 0.6 }}
             className={`lg:flex gap-5 justify-between ${guided > 0 && guided !== 4 ? 'lg:blur-[8px]' : ''}`}
           >
-            <CardItem className='py-4 lg:py-6 flex-1 mb-4 lg:mb-0'>
-              <div className='h-auto'>
+            <CardItem className='py-4 overflow-x-auto lg:py-6 flex-1 mb-4 lg:mb-0'>
+              <div className='h-auto  min-w-[500px]'>
                 <div className='flex ml-6'>
                   <div className="border mr-3 rounded-full border-dashed w-7 h-7 border-[#caeae50c] items-center justify-center flex">
                     <img src={arrowUp} />
@@ -279,29 +299,30 @@ function Dashboard() {
                   <p className='text-white font-lufga text-2xl pb-4'>You Supplied</p>
                 </div>
                 <div className='text-center bg-[#071311]'>
-                  <div className='py-3 px-6 grid grid-cols-6 border-y-[1px] border-[#050F0D] bg-[#212325]'>
-                    <div className='text-white font-lufga text-[11px] flex'>
+                  <div className='border-y-[1px] border-[#050F0D] bg-[#212325] text-white font-lufga text-[15px] grid grid-cols-6 h-10 items-center justify-center'>
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center min-w-full'>
                       Assets
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px] flex'>
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center min-w-full'>
                       Balance
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px] flex ml-4'>
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center min-w-full'>
                       Value
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px] flex ml-8'>
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center min-w-full'>
                       APR
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px] flex ml-4'>
+                    <div className='text-white font-lufga text-[11px] flex  min-w-full'>
                       Collateral
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px]'></div>
+                    <div className='text-white font-lufga text-[11px]  min-w-full'></div>
                   </div>
+      
                   <div className='overflow-auto max-h-[200px]'>
                     {(supplied || []).map((item: any, index: any) => (
                       <button
@@ -361,7 +382,7 @@ function Dashboard() {
                   </div>
                 </div>
                 <div className='text-center bg-[#111E1C]'>
-                  <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                  <div className='border-y-[1px] border-[#071311] text-white font-lufga text-[15px] grid grid-cols-6 h-10 items-center justify-center'>
                     <div className='text-white font-lufga text-[15px] flex justify-center items-center'>
                       <img src={maskGroup} className='w-3 h-3 mr-1' />
                       PURR
@@ -369,12 +390,12 @@ function Dashboard() {
                     <p>138.93K</p>
                     <p>$22.21K</p>
                     <p className='text-[#2DC24E]'>14.56%</p>
-                    <div>
+                    <div className='ml-6'>
                       <img src={angle} />
                     </div>
                     <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Supply</div>
                   </div>
-                  <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                  <div className='grid grid-cols-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] justify-between h-10 items-center'>
                     <div className='text-white font-lufga text-[15px] flex items-center justify-center'>
                       <img src={coinGroup} className='w-3 h-3 mr-1' />
                       USDC
@@ -382,12 +403,12 @@ function Dashboard() {
                     <p>$783.12K</p>
                     <p>$783.12K</p>
                     <p className='text-[#2DC24E]'>3.77%</p>
-                    <div className='items-center flex justify-center'>
+                    <div className='ml-6'>
                       <img src={angle} />
                     </div>
                     <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Supply</div>
                   </div>
-                  <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                  <div className=' grid grid-cols-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] justify-between h-10 items-center'>
                     <div className='text-white font-lufga text-[15px] items-center justify-center flex'>
                       <img src={bitcoinGroup} className='w-3 h-3 mr-1' />
                       MBTC
@@ -395,12 +416,12 @@ function Dashboard() {
                     <p>12.88</p>
                     <p>$772.82K</p>
                     <p className='text-[#2DC24E]'>4.11%</p>
-                    <div>
+                    <div className='ml-6'>
                       <img src={angle} />
                     </div>
                     <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Supply</div>
                   </div>
-                  <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                  <div className='pl-2 grid grid-cols-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] justify-between h-10 items-center'>
                     <div className='text-white font-lufga text-[15px] items-center justify-center flex'>
                       <img src={stHype} className='w-3 h-3 mr-1' />
                       stHYPE
@@ -408,18 +429,17 @@ function Dashboard() {
                     <p>12.41K</p>
                     <p>$17.92K</p>
                     <p className='text-[#2DC24E]'>4.11%</p>
-                    <div>
+                    <div className='ml-6'>
                       <img src={angle} />
                     </div>
                     <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Supply</div>
-                  </div>
-                  
-                  
+                  </div>        
                 </div>
               </div>
             </CardItem>
-            <CardItem className='py-4 lg:py-6 flex-1'>
-              <div className='max-h-[250px]'>
+            
+            <CardItem className='py-4 lg:py-6 flex-1 overflow-x-auto'>
+              <div className='max-h-[250px] min-w-[500px]'>
                 <div className='flex ml-6'>
                   <div className="border mr-3 rounded-full border-dashed w-7 h-7 bg-[#ff00040c] border-[#caeae50c] items-center justify-center flex">
                     <img src={arrowDown} />
@@ -427,25 +447,25 @@ function Dashboard() {
                   <p className='text-white font-lufga text-2xl pb-4'>You Borrowed</p>
                 </div>
                 <div className='text-center'>
-                <div className='py-3 px-6 grid grid-cols-6 border-y-[1px] border-[#050F0D] bg-[#212325]'>
-                    <div className='text-white font-lufga text-[11px] flex'>
+                  <div className='fix border-y-[1px] border-[#050F0D] bg-[#212325] text-white font-lufga text-[15px] grid grid-cols-6 h-10 items-center justify-center'>
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center'>
                       Assets
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px] flex'>
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center'>
                       Balance
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px] flex ml-4'>
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center'>
                       Value
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px] flex ml-8'>
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center'>
                       APR
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
-                    <div className='text-white font-lufga text-[11px] flex ml-4'>
-                      Pool
+                    <div className='text-white font-lufga text-[11px] flex justify-center items-center'>
+                      Core
                       <img src={alignCenterItem} className='w-2 h-2 ml-1 mt-1'/>
                     </div>
                     <div className='text-white font-lufga text-[11px]'></div>
@@ -498,7 +518,7 @@ function Dashboard() {
                     ))}
                   </div>
                   <div className='text-center bg-[#111E1C]'>
-                    <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                    <div className='grid grid-cols-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] justify-between h-10 items-center'>
                       <div className='text-white font-lufga text-[15px] flex items-center justify-center'>
                         <img src={coinGroup} className='w-3 h-3 mr-1' />
                         USDC
@@ -509,7 +529,7 @@ function Dashboard() {
                       <p className='text-[#2DC24E]'>Core</p>
                       <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Reply</div>
                     </div>
-                    <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                    <div className='grid grid-cols-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] justify-between h-10 items-center'>
                       <div className='text-white font-lufga text-[15px] flex justify-center items-center'>
                         <img src={maskGroup} className='w-3 h-3 mr-1' />
                         PURR
@@ -520,7 +540,7 @@ function Dashboard() {
                       <p className='text-[#2DC24E]'>Core</p>
                       <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Reply</div>
                     </div>
-                    <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                    <div className='grid grid-cols-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] justify-between h-10 items-center'>
                       <div className='text-white font-lufga text-[15px] items-center justify-center flex'>
                         <img src={ethereum} className='w-3 h-3 mr-1' />
                         ETH
@@ -531,7 +551,7 @@ function Dashboard() {
                       <p className='text-[#2DC24E]'>Core</p>
                       <div className='font-lufga w-20 h-7 bg-[#CAEAE5] rounded-md flex items-center justify-center text-[#071311]'>Reply</div>
                     </div>
-                    <div className='py-3 px-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] flex justify-between h-10 items-center'>
+                    <div className='grid grid-cols-6 border-y-[1px] border-[#071311] text-white font-lufga text-[15px] justify-between h-10 items-center'>
                       <div className='text-white font-lufga text-[15px] items-center justify-center flex'>
                         <img src={bitcoinGroup} className='w-3 h-3 mr-1' />
                         MBTC
